@@ -1,0 +1,43 @@
+---
+title: "Case Study 2"
+author: "Jonathan Knowles, Michael Crowder, Nadezhda Green"
+date: "4/23/2017"
+output: github_document
+---
+## Introduction  
+##### This case study presents us with 3 tasks in which we will outline in the sections contained in this document.  The first task is to replicate a matrix in R, Python and SAS.  Our second task has our group using orange tree data to examine the size of trunks and visualizing the data in various methods.  The third task sets us upon a dataset of global temperature since the 1800’s with multiple date formats.  We are asked several questions that require us to clean, analyze and visualize the data.  Concluding the Case Study we will offer a conclusion between the two data sets that are created from our third task.  
+
+#### Install Packages and Load Libraries - if you already have these Packages installed and loaded you may skip this step.
+```{r message=FALSE}
+#source("install_load.R", print.eval = TRUE)
+```
+
+### 2. 
+##### a) Calculate the mean and the median of the trunk circumferences for different size of the trees. (Tree)  
+#### We get the mean and median trunk circumference for the types of trees.  
+```{r}
+source("Q2_Orange.R", print.eval = TRUE, echo = TRUE)
+```
+
+
+### 3.  
+#### Part(i) Find the difference between the maximum and the minimum monthly average temperatures for each country and report/visualize top 20 countries with the maximum differences for the period since 1900.
+```{r}
+source("part_i.R", print.eval = TRUE, echo = TRUE)
+```
+
+#### Part (ii) a, b, and c. For part c we get an *answer of 1.865 degrees that happened in 2012 to 2013*
+```{r}
+source("part_ii.R", print.eval = TRUE, echo = TRUE)
+```
+
+#### Part (iii) Download “CityTemp” data set at box.com. Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.
+```{r}
+source("part_iii.R", print.eval = TRUE, echo = TRUE)
+```
+
+#### Part(iv) Compare the two graphs in (i) and (iii) and comment it.
+#### What we find these two graphs is that we have countries that are large and contain many different climate zones like China and Canada.
+```{r}
+source("part_iv.R", print.eval = TRUE, echo = TRUE)
+```
