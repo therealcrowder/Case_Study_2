@@ -6,13 +6,40 @@ Jonathan Knowles, Michael Crowder, Nadezhda Green
 Introduction
 ------------
 
-##### This case study presents us with 3 tasks in which we will outline in the sections contained in this document. The first task is to replicate a matrix in R, Python and SAS. Our second task has our group using orange tree data to examine the size of trunks and visualizing the data in various methods. The third task sets us upon a dataset of global temperature since the 1800’s with multiple date formats. We are asked several questions that require us to clean, analyze and visualize the data. Concluding the Case Study we will offer a conclusion between the two data sets that are created from our third task.
+##### This case study presents us with 3 tasks in which we will outline in the sections contained in this document. The first task is to replicate a matrix in R, Python and SAS. Our second task has our group using orange tree data to examine the size of trunks and visualizing the data in various methods. The third task sets us upon a dataset of global temperature since the 1800’s with multiple date formats. We are asked several questions that require us to clean, analyze and visualize the data. Concluding the Case Study we will offer a conclusion between the two data sets that are created from our third task. For detailed code commenting please see the case\_study\_2.Rmd file.
 
 #### Install Packages and Load Libraries - if you already have these Packages installed and loaded you may skip this step.
 
 ``` r
-#source("install_load.R", print.eval = TRUE)
+source("install_load.R", print.eval = TRUE)
 ```
+
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+
+    ## Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so':
+    ##   dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib
+    ##   Referenced from: /Library/Frameworks/R.framework/Resources/modules//R_X11.so
+    ##   Reason: image not found
 
 ### 2.
 
@@ -21,84 +48,19 @@ Introduction
 #### We get the mean and median trunk circumference for the types of trees.
 
 ``` r
-source("Q2_Orange.R", print.eval = TRUE, echo = TRUE)
+source("Q2_Orange.R", print.eval = TRUE, echo = FALSE)
 ```
 
-    ## 
-    ## > OrangeData <- Orange
-    ## 
-    ## > library(ggplot2)
-    ## 
-    ## > qplot(x = OrangeData$age, y = OrangeData$circumference, 
-    ## +     shape = OrangeData$Tree, xlab = "Circumference", ylab = "Age", 
-    ## +     main = "Trunk C ..." ... [TRUNCATED]
-
-![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
-
-    ## 
-    ## > ggplot(data = OrangeData, aes(x = Tree, y = circumference, 
-    ## +     group = Tree)) + geom_boxplot(aes(color = Tree)) + labs(x = "Tree #", 
-    ## +     y = " ..." ... [TRUNCATED]
-
-![](README_files/figure-markdown_github/unnamed-chunk-2-2.png)
+![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)![](README_files/figure-markdown_github/unnamed-chunk-2-2.png)
 
 ### 3.
 
 #### Part(i) Find the difference between the maximum and the minimum monthly average temperatures for each country and report/visualize top 20 countries with the maximum differences for the period since 1900.
 
 ``` r
-source("part_i.R", print.eval = TRUE, echo = TRUE)
+source("part_i.R", print.eval = TRUE, echo = FALSE)
 ```
 
-    ## 
-    ## > TEMPData <- read.csv("TEMP.csv")
-    ## 
-    ## > TEMPDataSince1900 <- TEMPData[nrow(TEMPData):1, ]
-    ## 
-    ## > library(lubridate)
-
-    ## 
-    ## Attaching package: 'lubridate'
-
-    ## The following object is masked from 'package:base':
-    ## 
-    ##     date
-
-    ## 
-    ## > TEMPDataC <- na.omit(TEMPData)
-    ## 
-    ## > AvgTempMin <- aggregate(TEMPData$Monthly.AverageTemp ~ 
-    ## +     TEMPData$Country, TEMPData, function(x) min(x))
-    ## 
-    ## > AvgTempMax <- aggregate(TEMPData$Monthly.AverageTemp ~ 
-    ## +     TEMPData$Country, TEMPData, function(x) max(x))
-    ## 
-    ## > library(plyr)
-
-    ## 
-    ## Attaching package: 'plyr'
-
-    ## The following object is masked from 'package:lubridate':
-    ## 
-    ##     here
-
-    ## 
-    ## > AvgMinANDMaxTemp <- merge(AvgTempMax, AvgTempMin, 
-    ## +     by = 1)
-    ## 
-    ## > AvgMinANDMaxTemp <- rename(AvgMinANDMaxTemp, c(`TEMPData$Country` = "Country", 
-    ## +     `TEMPData$Monthly.AverageTemp.x` = "AvgMaxTemp", `TEMPData$Mon .... [TRUNCATED] 
-    ## 
-    ## > AvgMinANDMaxTemp$AvgMaxMinDiff <- AvgMinANDMaxTemp$AvgMaxTemp - 
-    ## +     AvgMinANDMaxTemp$AvgMinTemp
-    ## 
-    ## > AvgMinANDMaxTempByDiff <- AvgMinANDMaxTemp[order(AvgMinANDMaxTemp$AvgMaxMinDiff, 
-    ## +     decreasing = TRUE), ]
-    ## 
-    ## > AvgMinANDMaxTempByDiffTop20 <- AvgMinANDMaxTempByDiff[order(-AvgMinANDMaxTempByDiff$AvgMaxMinDiff), 
-    ## +     ][1:20, ]
-    ## 
-    ## > AvgMinANDMaxTempByDiffTop20
     ##          Country AvgMaxTemp AvgMinTemp AvgMaxMinDiff
     ## 115   Kazakhstan     25.562    -23.601        49.163
     ## 144     Mongolia     20.716    -27.442        48.158
@@ -120,9 +82,6 @@ source("part_i.R", print.eval = TRUE, echo = TRUE)
     ## 216   Tajikistan     19.363    -16.466        35.829
     ## 174       Poland     22.509    -13.107        35.616
     ## 11       Armenia     25.291    -10.275        35.566
-    ## 
-    ## > ggplot(data = AvgMinANDMaxTempByDiffTop20, aes(x = AvgMinANDMaxTempByDiffTop20$Country, 
-    ## +     y = AvgMinANDMaxTempByDiffTop20$AvgMaxMinDiff, color  .... [TRUNCATED]
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
@@ -240,7 +199,7 @@ source("part_iii.R", print.eval = TRUE, echo = TRUE)
 
 #### Part(iv) Compare the two graphs in (i) and (iii) and comment it.
 
-#### What we find these two graphs is that we have countries that are large and contain many different climate zones like China and Canada.
+#### What we find these two graphs is that we have countries that are large and contain many different climate zones like China and Canada and the United States. Inland areas in what is called the Grasslands Biome - Midlatitude Climates (Bs) in the Koppen Climate Classification System can have extreme temperatures in both winter months and summer months. For more information on the Koppen Climate Classifications see <http://www.thesustainabilitycouncil.org/resources/the-koppen-climate-classification-system/>
 
 ``` r
 source("part_iv.R", print.eval = TRUE, echo = TRUE)
