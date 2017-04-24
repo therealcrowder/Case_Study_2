@@ -7,21 +7,14 @@ output: github_document
 ## Introduction  
 ##### This case study presents us with 3 tasks in which we will outline in the sections contained in this document.  The first task is to replicate a matrix in R, Python and SAS.  Our second task has our group using orange tree data to examine the size of trunks and visualizing the data in various methods.  The third task sets us upon a dataset of global temperature since the 1800’s with multiple date formats.  We are asked several questions that require us to clean, analyze and visualize the data.  Concluding the Case Study we will offer a conclusion between the two data sets that are created from our third task. For detailed code commenting please see the case_study_2.Rmd file.
 
-#### Install Packages and Load Libraries - if you already have these Packages installed and loaded you may skip this step.
+#### Install Packages and Load Libraries - if you already have these Packages installed and loaded you may skip this step.  The packages we are going to use are: weathermetrics, knitr, markdown, ggplot2, plyr, lubridate, formatR.
 ```{r message=FALSE}
 source("install_load.R", print.eval = TRUE)
 ```
 
 ### 2. 
 ##### a) Calculate the mean and the median of the trunk circumferences for different size of the trees. (Tree)  
-#### *We get the mean and median trunk circumference for the types of trees.*  
-
-```{r, tidy=TRUE}
-library(pander)
-library(plyr)
-pander(ddply(Orange, .(Tree), summarize, MeanCirc = mean(circumference), MedCirc = median(circumference)), caption = "Tree Sizes")
-```
-
+##### *We get the mean and median trunk circumference for the types of trees.Tree 1's mean is 111.14mm with a median of 125mm. Tree 2's mean is 94mm with a median of 108mm. Tree 3's mean 139.3mm with a median 167mm. Tree 4's mean is 99.6mm with a median of 115mm. Tree 5's mean is 135.3mm with a median of 156mm. We can also gather from the plots that there is a relationship between the age of the tree and the size of the circumference of the tree *  
 ```{r}
 source("Q2_Orange.R", print.eval = TRUE, echo = TRUE)
 ```
@@ -29,7 +22,7 @@ source("Q2_Orange.R", print.eval = TRUE, echo = TRUE)
 
 ### 3.  
 #### Part(i) Find the difference between the maximum and the minimum monthly average temperatures for each country and report/visualize top 20 countries with the maximum differences for the period since 1900.  
-#### *The top 20 countries with maximum differences for the period are: Kazakhstan, Mongolia, Russia, Canada, Uzbekistan, Turkmenistan, Finland, Belarus, Ukraine, Estonia, Kyrgyzstan, North Korea, Lativa, Moldova, Greenland, Denmark, Lithuania, Tajikistan, Poland, Armenia*  
+#### *The top 20 countries with maximum differences for the period are: Kazakhstan, Mongolia, Russia, Canada, Uzbekistan, Turkmenistan, Finland, Belarus, Ukraine, Estonia, Kyrgyzstan, North Korea, Latvia, Moldova, Greenland, Denmark, Lithuania, Tajikistan, Poland, Armenia*  
 ```{r}
 source("part_i.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 ```
@@ -39,7 +32,8 @@ source("part_i.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 source("part_ii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 ```
 
-#### Part (iii) Download “CityTemp” data set at box.com. Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.
+#### Part (iii) Download “CityTemp” data set at box.com. Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.  
+#### The top 20 cities with the greatest difference in average temperature since 1900 are Baghdad, Berlin, Changchun, Chicago, Dalian, Harbin, Jinan, Kiev, Mashhad, Montreal, Moscow, New York, Peking, Saint Petersburg, Seoul, Shenyang, Taiyuan, Tangshan, Tianjin and Toronto.  
 ```{r}
 source("part_iii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 ```

@@ -8,7 +8,7 @@ Introduction
 
 ##### This case study presents us with 3 tasks in which we will outline in the sections contained in this document. The first task is to replicate a matrix in R, Python and SAS. Our second task has our group using orange tree data to examine the size of trunks and visualizing the data in various methods. The third task sets us upon a dataset of global temperature since the 1800’s with multiple date formats. We are asked several questions that require us to clean, analyze and visualize the data. Concluding the Case Study we will offer a conclusion between the two data sets that are created from our third task. For detailed code commenting please see the case\_study\_2.Rmd file.
 
-#### Install Packages and Load Libraries - if you already have these Packages installed and loaded you may skip this step.
+#### Install Packages and Load Libraries - if you already have these Packages installed and loaded you may skip this step. The packages we are going to use are: weathermetrics, knitr, markdown, ggplot2, plyr, lubridate, formatR.
 
 ``` r
 source("install_load.R", print.eval = TRUE)
@@ -16,90 +16,31 @@ source("install_load.R", print.eval = TRUE)
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpORptcV/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpORptcV/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpORptcV/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpORptcV/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpORptcV/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpORptcV/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
-    ## 
-    ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
-    ## 
-    ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
-    ## 
-    ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpORptcV/downloaded_packages
 
 ### 2.
 
 ##### a) Calculate the mean and the median of the trunk circumferences for different size of the trees. (Tree)
 
-#### *We get the mean and median trunk circumference for the types of trees.*
-
-``` r
-library(pander)
-library(plyr)
-pander(ddply(Orange, .(Tree), summarize, MeanCirc = mean(circumference), MedCirc = median(circumference)), 
-    caption = "Tree Sizes")
-```
-
-<table style="width:40%;">
-<caption>Tree Sizes</caption>
-<colgroup>
-<col width="9%" />
-<col width="15%" />
-<col width="15%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Tree</th>
-<th align="center">MeanCirc</th>
-<th align="center">MedCirc</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">3</td>
-<td align="center">94</td>
-<td align="center">108</td>
-</tr>
-<tr class="even">
-<td align="center">1</td>
-<td align="center">99.57</td>
-<td align="center">115</td>
-</tr>
-<tr class="odd">
-<td align="center">5</td>
-<td align="center">111.1</td>
-<td align="center">125</td>
-</tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="center">135.3</td>
-<td align="center">156</td>
-</tr>
-<tr class="odd">
-<td align="center">4</td>
-<td align="center">139.3</td>
-<td align="center">167</td>
-</tr>
-</tbody>
-</table>
+##### *We get the mean and median trunk circumference for the types of trees.Tree 1's mean is 111.14mm with a median of 125mm. Tree 2's mean is 94mm with a median of 108mm. Tree 3's mean 139.3mm with a median 167mm. Tree 4's mean is 99.6mm with a median of 115mm. Tree 5's mean is 135.3mm with a median of 156mm. We can also gather from the plots that there is a relationship between the age of the tree and the size of the circumference of the tree *
 
 ``` r
 source("Q2_Orange.R", print.eval = TRUE, echo = TRUE)
@@ -108,25 +49,38 @@ source("Q2_Orange.R", print.eval = TRUE, echo = TRUE)
     ## 
     ## > OrangeData <- Orange
     ## 
+    ## > Q2aFunction <- function(x) {
+    ## +     c(mean = mean(x), median = median(x))
+    ## + }
+    ## 
+    ## > cbind(Tree = unique(OrangeData$Tree), do.call(rbind, 
+    ## +     tapply(OrangeData$circumference, OrangeData$Tree, Q2aFunction)))
+    ##   Tree      mean median
+    ## 3    2  94.00000    108
+    ## 1    4  99.57143    115
+    ## 5    1 111.14286    125
+    ## 2    5 135.28571    156
+    ## 4    3 139.28571    167
+    ## 
     ## > library(ggplot2)
     ## 
     ## > qplot(data = OrangeData, x = age, y = circumference, 
     ## +     shape = Tree, xlab = "Circumference", ylab = "Age", main = "Trunk Circumference versus A ..." ... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
     ## 
     ## > ggplot(data = OrangeData, aes(x = Tree, y = circumference, 
     ## +     group = Tree)) + geom_boxplot(aes(color = Tree)) + labs(x = "Tree #", 
     ## +     y = " ..." ... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-3-2.png)
+![](README_files/figure-markdown_github/unnamed-chunk-2-2.png)
 
 ### 3.
 
 #### Part(i) Find the difference between the maximum and the minimum monthly average temperatures for each country and report/visualize top 20 countries with the maximum differences for the period since 1900.
 
-#### *The top 20 countries with maximum differences for the period are: Kazakhstan, Mongolia, Russia, Canada, Uzbekistan, Turkmenistan, Finland, Belarus, Ukraine, Estonia, Kyrgyzstan, North Korea, Lativa, Moldova, Greenland, Denmark, Lithuania, Tajikistan, Poland, Armenia*
+#### *The top 20 countries with maximum differences for the period are: Kazakhstan, Mongolia, Russia, Canada, Uzbekistan, Turkmenistan, Finland, Belarus, Ukraine, Estonia, Kyrgyzstan, North Korea, Latvia, Moldova, Greenland, Denmark, Lithuania, Tajikistan, Poland, Armenia*
 
 ``` r
 source("part_i.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
@@ -199,7 +153,7 @@ source("part_i.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
     ## > # With plotting this data we want to display the difference between the Avg Min and Max Temp by the top 20 countries #
     ## > ggplot(data = AvgMinANDMaxT .... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 #### Part (ii) a, b, and c. For part c we get an *answer of 1.865 degrees that happened in 2012 to 2013*
 
@@ -261,9 +215,11 @@ source("part_ii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
     ## 
     ## > ggplot(data = landTemp, aes(x = landTemp$`DateTesting$Year`, y = landTemp$`DateTesting$Monthly.AverageTempFahrenheit`, group=1)) + geom_line() + geo .... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 #### Part (iii) Download “CityTemp” data set at box.com. Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.
+
+#### The top 20 cities with the greatest difference in average temperature since 1900 are Baghdad, Berlin, Changchun, Chicago, Dalian, Harbin, Jinan, Kiev, Mashhad, Montreal, Moscow, New York, Peking, Saint Petersburg, Seoul, Shenyang, Taiyuan, Tangshan, Tianjin and Toronto.
 
 ``` r
 source("part_iii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
@@ -310,7 +266,7 @@ source("part_iii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
     ## > # Plot for Top 20 Cities
     ## > ggplot(data=CityTempDataAvgMinANDMaxTemp, aes(x=City, y=AvgMaxMinDiff, group=1, color=City)) + geom_point(size = 3) + the .... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 #### Part(iv) Compare the two graphs in (i) and (iii) and comment it.
 
@@ -348,4 +304,4 @@ source("part_iv.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
     ## +   # Country Plot (Black Circles)
     ## +   geom_point(data=AvgMinANDMaxTempByDiffTop20, aes(x=Country, y=AvgMaxMinDiff), show.legend = FALSE, .... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
