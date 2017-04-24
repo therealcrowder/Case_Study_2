@@ -12,7 +12,7 @@ TEMPDataC <- na.omit(TEMPData)
 # These two lines will gives us the variables for temp min and max #
 AvgTempMin <- aggregate(TEMPData$Monthly.AverageTemp ~ TEMPData$Country, TEMPData, function(x) min(x))
 AvgTempMax <- aggregate(TEMPData$Monthly.AverageTemp ~ TEMPData$Country, TEMPData, function(x) max(x))
-# If you don't already have the package plyr please install by taking the "#" off #  
+# If you don't already have the package plyr please install by taking the "#" off # 
 
 #install.packages("plyr")
 library(plyr)
@@ -31,4 +31,4 @@ AvgMinANDMaxTempByDiffTop20 <- AvgMinANDMaxTempByDiff[order(-AvgMinANDMaxTempByD
 # We simply display the varible below to get our table of the largest variations in tempeture by country.
 AvgMinANDMaxTempByDiffTop20
 # With plotting this data we want to display the difference between the Avg Min and Max Temp by the top 20 countries #
-ggplot(data = AvgMinANDMaxTempByDiffTop20, aes(x = AvgMinANDMaxTempByDiffTop20$Country, y = AvgMinANDMaxTempByDiffTop20$AvgMaxMinDiff, color = AvgMinANDMaxTempByDiffTop20$Country)) + geom_point(size = 3, show.legend = FALSE) + theme(axis.text.x = element_text(angle = 90)) + ggtitle("Top 20 countries with the maximum average temperature differences for the period since 1900") + xlab("Country") + ylab("Diff between Avg Min & Max Temp")
+ggplot(data = AvgMinANDMaxTempByDiffTop20, aes(x = AvgMinANDMaxTempByDiffTop20$Country, y = AvgMinANDMaxTempByDiffTop20$AvgMaxMinDiff, color = AvgMinANDMaxTempByDiffTop20$Country)) + geom_point(size = 3, show.legend = FALSE) + theme(axis.text.x = element_text(angle = 90)) + ggtitle("Top 20 countries with the maximum \n average temperature differences for the period since 1900") + xlab("Country") + ylab("Diff between Avg Min & Max Temp")

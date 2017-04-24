@@ -16,25 +16,36 @@ source("install_load.R", print.eval = TRUE)
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpMI7lV1/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
+
+    ## Warning in download.file(url, destfile, method, mode = "wb", ...): cannot
+    ## open URL 'http://cran.us.r-project.org/bin/macosx/mavericks/contrib/3.3/
+    ## lubridate_1.6.0.tgz': HTTP status was '0 (null)'
+
+    ## Warning in download.packages(pkgs, destdir = tmpd, available = available, :
+    ## download of package 'lubridate' failed
+
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
 
     ## Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so':
     ##   dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib
@@ -45,22 +56,86 @@ source("install_load.R", print.eval = TRUE)
 
 ##### a) Calculate the mean and the median of the trunk circumferences for different size of the trees. (Tree)
 
-#### We get the mean and median trunk circumference for the types of trees.
+#### *We get the mean and median trunk circumference for the types of trees.*
+
+![](/Users/mcrowder/Documents/Grad%20School/Data_Science/Case_Study_2/Case_Study_2/orangeTree.png)
 
 ``` r
-source("Q2_Orange.R", print.eval = TRUE, echo = FALSE)
+source("Q2_Orange.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)![](README_files/figure-markdown_github/unnamed-chunk-2-2.png)
+    ## 
+    ## > OrangeData <- Orange
+    ## 
+    ## > #We are going to use a SQL function to get answer to part A #
+    ## > #summaryBy(circumference ~ Tree, data = OrangeData, FUN = list(mean, median))
+    ## > 
+    ## > 
+    ##  .... [TRUNCATED] 
+    ## 
+    ## > qplot(data = OrangeData, x = age, y = circumference, shape = Tree, xlab = "Circumference", ylab = "Age", main = "Trunk Circumference versus Age by T ..." ... [TRUNCATED]
+
+![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
+
+    ## 
+    ## > # For the boxplot we use ggplot to generate Truck Circumference by Tree using different colors by tree #
+    ## > ggplot(data = OrangeData,
+    ## +   aes(x = Tre .... [TRUNCATED]
+
+![](README_files/figure-markdown_github/unnamed-chunk-2-2.png)
 
 ### 3.
 
 #### Part(i) Find the difference between the maximum and the minimum monthly average temperatures for each country and report/visualize top 20 countries with the maximum differences for the period since 1900.
 
+#### *The top 20 countries with maximum differences for the period are: Kazakhstan, Mongolia, Russia, Canada, Uzbekistan, Turkmenistan, Finland, Belarus, Ukraine, Estonia, Kyrgyzstan, North Korea, Lativa, Moldova, Greenland, Denmark, Lithuania, Tajikistan, Poland, Armenia*
+
 ``` r
-source("part_i.R", print.eval = TRUE, echo = FALSE)
+source("part_i.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 ```
 
+    ## 
+    ## > # We read in the data set that has already been downloaded from box.com #
+    ## > TEMPData <- read.csv("TEMP.csv")
+    ## 
+    ## > # Here we parse the data to what we need #
+    ## > TEMPDataSince1900 <- TEMPData[nrow(TEMPData):1,]
+    ## 
+    ## > # If you don't already have the package lubridate please install by taking the "#" off #
+    ## > #install.packages("lubridate")
+    ## > # load the library #
+    ## > l .... [TRUNCATED] 
+    ## 
+    ## > # Remove the NA's in this dataset #
+    ## > TEMPDataC <- na.omit(TEMPData)
+    ## 
+    ## > # These two lines will gives us the variables for temp min and max #
+    ## > AvgTempMin <- aggregate(TEMPData$Monthly.AverageTemp ~ TEMPData$Country, TEMP .... [TRUNCATED] 
+    ## 
+    ## > AvgTempMax <- aggregate(TEMPData$Monthly.AverageTemp ~ TEMPData$Country, TEMPData, function(x) max(x))
+    ## 
+    ## > # If you don't already have the package plyr please install by taking the "#" off # 
+    ## > 
+    ## > #install.packages("plyr")
+    ## > library(plyr)
+    ## 
+    ## > # We then merge the Min and Max data #
+    ## > AvgMinANDMaxTemp <- merge(AvgTempMax, AvgTempMin, by=1)
+    ## 
+    ## > # Continuing the tidying process we take the AvgMinANDMaxTemp and name the column names #
+    ## > AvgMinANDMaxTemp <- rename(AvgMinANDMaxTemp, c("TEMPData ..." ... [TRUNCATED] 
+    ## 
+    ## > # With the below line of code, we take the difference of the min and max #
+    ## > AvgMinANDMaxTemp$AvgMaxMinDiff <- AvgMinANDMaxTemp$AvgMaxTemp - AvgMinA .... [TRUNCATED] 
+    ## 
+    ## > # This line sets the order of the difference to prepare for the seperation of the top 20 countries #
+    ## > AvgMinANDMaxTempByDiff <- AvgMinANDMaxTemp[or .... [TRUNCATED] 
+    ## 
+    ## > # Here we accomplish the actual seperation of the top 20 countries with the max differences since 1900 #
+    ## > AvgMinANDMaxTempByDiffTop20 <- AvgMinANDM .... [TRUNCATED] 
+    ## 
+    ## > # We simply display the varible below to get our table of the largest variations in tempeture by country.
+    ## > AvgMinANDMaxTempByDiffTop20
     ##          Country AvgMaxTemp AvgMinTemp AvgMaxMinDiff
     ## 115   Kazakhstan     25.562    -23.601        49.163
     ## 144     Mongolia     20.716    -27.442        48.158
@@ -82,51 +157,61 @@ source("part_i.R", print.eval = TRUE, echo = FALSE)
     ## 216   Tajikistan     19.363    -16.466        35.829
     ## 174       Poland     22.509    -13.107        35.616
     ## 11       Armenia     25.291    -10.275        35.566
+    ## 
+    ## > # With plotting this data we want to display the difference between the Avg Min and Max Temp by the top 20 countries #
+    ## > ggplot(data = AvgMinANDMaxT .... [TRUNCATED]
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 #### Part (ii) a, b, and c. For part c we get an *answer of 1.865 degrees that happened in 2012 to 2013*
 
 ``` r
-source("part_ii.R", print.eval = TRUE, echo = TRUE)
+source("part_ii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 ```
 
     ## 
+    ## > # Bring in the data again for TEMP.csv #
     ## > TempData = read.csv("TEMP.csv")
     ## 
+    ## > # We change the dataset name to prep for subsetting out the US Data #
     ## > USTemp <- TEMPData
     ## 
+    ## > # Here we subset the US data out #
     ## > USTemp <- subset(USTemp, Country == "United States")
     ## 
+    ## > # We isolate the US Temp from 1990 #
     ## > USTemp <- USTemp[-c(1:2656), ]
     ## 
-    ## > library(weathermetrics)
+    ## > # If you don't already have the package "weathermetrics" please install by taking the "#" off #
+    ## > #install.packages("weathermetrics")
+    ## > # load the l .... [TRUNCATED] 
     ## 
-    ## > USTemp$Monthly.AverageTempFahrenheit <- celsius.to.fahrenheit(USTemp$Monthly.AverageTemp, 
-    ## +     round = 3)
+    ## > # We use the weathermetrics package to execute the function to convert the celsisus to fahrenheit and answer part a #
+    ## > USTemp$Monthly.AverageTempFa .... [TRUNCATED] 
     ## 
     ## > DateTesting <- USTemp
     ## 
-    ## > DateTesting$FormattedDate <- as.Date(DateTesting$Date, 
-    ## +     format = "%m/%d/%Y")
+    ## > # We are simply formating the dates into one format #
+    ## > DateTesting$FormattedDate <- as.Date(DateTesting$Date, format="%m/%d/%Y")
     ## 
     ## > DateTesting$Month <- months(DateTesting$FormattedDate)
     ## 
+    ## > #If you don't already have the package "lubridate" please install by taking the "#" off #
+    ## > #install.packages("lubridate")
+    ## > 
     ## > library(lubridate)
     ## 
+    ## > #Here we start tidying the data by cleaning the dates #
     ## > DateTesting$Year <- year(DateTesting$FormattedDate)
     ## 
-    ## > landTemp <- aggregate(DateTesting$Monthly.AverageTempFahrenheit ~ 
-    ## +     DateTesting$Year, DateTesting, function(x) mean(x))
+    ## > # These
+    ## > landTemp <- aggregate(DateTesting$Monthly.AverageTempFahrenheit ~ DateTesting$Year, DateTesting, function(x) mean(x))
     ## 
-    ## > landTemp$Monthly.AverageTempFahrenheitDifference <- c(NA, 
-    ## +     round(diff(landTemp$`DateTesting$Monthly.AverageTempFahrenheit`), 
-    ## +         digits .... [TRUNCATED] 
+    ## > landTemp$Monthly.AverageTempFahrenheitDifference <- c(NA, round(diff(landTemp$`DateTesting$Monthly.AverageTempFahrenheit`), digits = 3))
     ## 
     ## > landTemp$`DateTesting$Monthly.AverageTempFahrenheit` <- NULL
     ## 
-    ## > landTemp <- rename(landTemp, c(`DateTesting$Year` = "Year", 
-    ## +     Monthly.AverageTempFahrenheitDifference = "AverageTemperatureDifferenceFromPrevio ..." ... [TRUNCATED] 
+    ## > landTemp <- rename(landTemp, c("DateTesting$Year"="Year", "Monthly.AverageTempFahrenheitDifference"="AverageTemperatureDifferenceFromPreviousYear"))
     ## 
     ## > landTemp <- arrange(landTemp, -landTemp$AverageTemperatureDifferenceFromPreviousYear)
     ## 
@@ -134,66 +219,58 @@ source("part_ii.R", print.eval = TRUE, echo = TRUE)
     ##   Year AverageTemperatureDifferenceFromPreviousYear
     ## 1 2013                                        1.865
     ## 
-    ## > landTemp <- aggregate(DateTesting$Monthly.AverageTempFahrenheit ~ 
-    ## +     DateTesting$Year, DateTesting, function(x) mean(x))
+    ## > landTemp <- aggregate(DateTesting$Monthly.AverageTempFahrenheit ~ DateTesting$Year, DateTesting, function(x) mean(x))
     ## 
-    ## > ggplot(data = landTemp, aes(x = landTemp$`DateTesting$Year`, 
-    ## +     y = landTemp$`DateTesting$Monthly.AverageTempFahrenheit`, 
-    ## +     group = 1)) + g .... [TRUNCATED]
+    ## > ggplot(data = landTemp, aes(x = landTemp$`DateTesting$Year`, y = landTemp$`DateTesting$Monthly.AverageTempFahrenheit`, group=1)) + geom_line() + geo .... [TRUNCATED]
 
 ![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 #### Part (iii) Download “CityTemp” data set at box.com. Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.
 
 ``` r
-source("part_iii.R", print.eval = TRUE, echo = TRUE)
+source("part_iii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 ```
 
     ## 
+    ## > # Read in the City Temp data #
     ## > CityTempData <- read.csv("CityTemp.csv")
     ## 
-    ## > CityTempData$FormattedDate <- as.Date(CityTempData$Date, 
-    ## +     format = "%m/%d/%Y")
+    ## > # We start the tidying process by cleaning the dates and setting the formats needed to complete our tasks #
+    ## > CityTempData$FormattedDate <- as.Date( .... [TRUNCATED] 
     ## 
     ## > CityTempData$Month <- months(CityTempData$FormattedDate)
     ## 
     ## > CityTempData$Year <- year(CityTempData$FormattedDate)
     ## 
-    ## > CityTempData <- CityTempData[order(CityTempData$Year), 
-    ## +     ]
+    ## > # Here we order the data by year
+    ## > CityTempData <- CityTempData[order(CityTempData$Year),]
     ## 
-    ## > CityTempData <- CityTempData[complete.cases(CityTempData[, 
-    ## +     10]), ]
+    ## > # Now we pull the since 1900 #
+    ## > CityTempData <- CityTempData[complete.cases(CityTempData[,10]),]
     ## 
-    ## > CityTempDataAvgMin <- aggregate(CityTempData$Monthly.AverageTemp ~ 
-    ## +     CityTempData$City, TEMPData, function(x) min(x))
+    ## > # With these lines we set variables for both min and the max, then we combine into one single variable #
+    ## > CityTempDataAvgMin <- aggregate(CityTempD .... [TRUNCATED] 
     ## 
-    ## > CityTempDataAvgMax <- aggregate(CityTempData$Monthly.AverageTemp ~ 
-    ## +     CityTempData$City, TEMPData, function(x) max(x))
+    ## > CityTempDataAvgMax <- aggregate(CityTempData$Monthly.AverageTemp ~ CityTempData$City, TEMPData, function(x) max(x))
     ## 
-    ## > CityTempDataAvgMinANDMaxTemp <- merge(CityTempDataAvgMax, 
-    ## +     CityTempDataAvgMin, by = 1)
+    ## > CityTempDataAvgMinANDMaxTemp <- merge(CityTempDataAvgMax, CityTempDataAvgMin, by=1)
     ## 
-    ## > CityTempDataAvgMinANDMaxTemp$AvgMaxMinDiff <- CityTempDataAvgMinANDMaxTemp$`CityTempData$Monthly.AverageTemp.x` - 
-    ## +     CityTempDataAvgMinANDMaxTem .... [TRUNCATED] 
+    ## > # Now we calculate the differences #
+    ## > CityTempDataAvgMinANDMaxTemp$AvgMaxMinDiff <- CityTempDataAvgMinANDMaxTemp$`CityTempData$Monthly.AverageTemp. .... [TRUNCATED] 
     ## 
-    ## > CityTempDataAvgMinANDMaxTemp <- rename(CityTempDataAvgMinANDMaxTemp, 
-    ## +     c(`CityTempData$City` = "City", `CityTempData$Monthly.AverageTemp.x` = " ..." ... [TRUNCATED] 
+    ## > # Make columns human readable #
+    ## > CityTempDataAvgMinANDMaxTemp <- rename(CityTempDataAvgMinANDMaxTemp, c("CityTempData$City"="City", "CityTempData$M ..." ... [TRUNCATED] 
     ## 
-    ## > CityTempDataAvgMinANDMaxTemp <- CityTempDataAvgMinANDMaxTemp[order(CityTempDataAvgMinANDMaxTemp$AvgMaxMinDiff, 
-    ## +     decreasing = TRUE), ]
+    ## > CityTempDataAvgMinANDMaxTemp <- CityTempDataAvgMinANDMaxTemp[order(CityTempDataAvgMinANDMaxTemp$AvgMaxMinDiff, decreasing = TRUE), ]
     ## 
-    ## > CityTempDataAvgMinANDMaxTemp <- CityTempDataAvgMinANDMaxTemp[order(-CityTempDataAvgMinANDMaxTemp$AvgMaxMinDiff), 
-    ## +     ][1:20, ]
+    ## > CityTempDataAvgMinANDMaxTemp <- CityTempDataAvgMinANDMaxTemp[order(-CityTempDataAvgMinANDMaxTemp$AvgMaxMinDiff),][1:20,]
     ## 
-    ## > CityTempDataAvgMinANDMaxTemp[, "Country"] <- NA
+    ## > CityTempDataAvgMinANDMaxTemp[,"Country"] <- NA
     ## 
-    ## > CityTempDataAvgMinANDMaxTemp$Country <- CityTempData$Country[match(CityTempDataAvgMinANDMaxTemp$City, 
-    ## +     CityTempData$City)]
+    ## > CityTempDataAvgMinANDMaxTemp$Country <- CityTempData$Country[match(CityTempDataAvgMinANDMaxTemp$City,CityTempData$City)]
     ## 
-    ## > ggplot(data = CityTempDataAvgMinANDMaxTemp, aes(x = City, 
-    ## +     y = AvgMaxMinDiff, group = 1, color = City)) + geom_point(size = 3) + 
-    ## +     theme( .... [TRUNCATED]
+    ## > # Plot for Top 20 Cities
+    ## > ggplot(data=CityTempDataAvgMinANDMaxTemp, aes(x=City, y=AvgMaxMinDiff, group=1, color=City)) + geom_point(size = 3) + the .... [TRUNCATED]
 
 ![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
@@ -202,7 +279,7 @@ source("part_iii.R", print.eval = TRUE, echo = TRUE)
 #### What we find these two graphs is that we have countries that are large and contain many different climate zones like China and Canada and the United States. Inland areas in what is called the Grasslands Biome - Midlatitude Climates (Bs) in the Koppen Climate Classification System can have extreme temperatures in both winter months and summer months. For more information on the Koppen Climate Classifications see <http://www.thesustainabilitycouncil.org/resources/the-koppen-climate-classification-system/>
 
 ``` r
-source("part_iv.R", print.eval = TRUE, echo = TRUE)
+source("part_iv.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
 ```
 
     ## 
@@ -229,8 +306,8 @@ source("part_iv.R", print.eval = TRUE, echo = TRUE)
     ## 10           Berlin     23.795    -10.125        33.920       Germany
     ## 43            Jinan     28.389     -5.389        33.778         China
     ## 
-    ## > ggplot() + geom_point(data = AvgMinANDMaxTempByDiffTop20, 
-    ## +     aes(x = Country, y = AvgMaxMinDiff), show.legend = TRUE, 
-    ## +     size = 3, shape = 1 .... [TRUNCATED]
+    ## > ggplot() +
+    ## +   # Country Plot (Black Circles)
+    ## +   geom_point(data=AvgMinANDMaxTempByDiffTop20, aes(x=Country, y=AvgMaxMinDiff), show.legend = FALSE, .... [TRUNCATED]
 
 ![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
