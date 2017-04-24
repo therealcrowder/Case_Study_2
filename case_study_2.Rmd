@@ -2,7 +2,7 @@
 title: "Case_Study_2"
 author: "Jonathan Knowles, Michael Crowder, Nadezhda Green"
 date: "4/19/2017"
-output: github_document
+output: pdf_document
 ---
 
 ## Introduction  
