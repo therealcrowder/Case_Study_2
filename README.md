@@ -16,36 +16,31 @@ source("install_load.R", print.eval = TRUE)
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
-
-    ## Warning in download.file(url, destfile, method, mode = "wb", ...): cannot
-    ## open URL 'http://cran.us.r-project.org/bin/macosx/mavericks/contrib/3.3/
-    ## lubridate_1.6.0.tgz': HTTP status was '0 (null)'
-
-    ## Warning in download.packages(pkgs, destdir = tmpd, available = available, :
-    ## download of package 'lubridate' failed
-
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpR9XLBj/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
 
     ## Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so':
     ##   dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib

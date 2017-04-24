@@ -54,7 +54,9 @@ quit;
 
 ##### a) Calculate the mean and the median of the trunk circumferences for different size of the trees. (Tree)
 
-We get the mean and median trunk circumference for the types of trees.
+#### *We get the mean and median trunk circumference for the types of trees.*
+
+![](/Users/mcrowder/Documents/Grad%20School/Data_Science/Case_Study_2/Case_Study_2/orangeTree.png)
 
 ``` r
 OrangeData <- Orange
@@ -104,6 +106,8 @@ ggplot(data = OrangeData, aes(x = Tree, y = circumference, group = Tree)) +
 ### 3.
 
 #### (i) Find the difference between the maximum and the minimum monthly average temperatures for each country and report/visualize top 20 countries with the maximum differences for the period since 1900.
+
+#### *The top 20 countries with maximum differences for the period are: Kazakhstan, Mongolia, Russia, Canada, Uzbekistan, Turkmenistan, Finland, Belarus, Ukraine, Estonia, Kyrgyzstan, North Korea, Lativa, Moldova, Greenland, Denmark, Lithuania, Tajikistan, Poland, Armenia*
 
 ``` r
 # We read in the data set that has already been downloaded from box.com #
@@ -235,7 +239,7 @@ USTemp$Monthly.AverageTempFahrenheit <- celsius.to.fahrenheit(USTemp$Monthly.Ave
     round = 3)
 ```
 
-#### This next part will help us answer both b and c. When we look at the answer that c gives us which is from 2012 to 2013 the average temp increased 1.865 that is a large increase when we look at the other years on the plot.
+#### This next part will help us answer both b and c. When we look at the *answer that c gives us which is from 2012 to 2013 the average temp increased 1.865 that is a large increase when we look at the other years on the plot.*
 
 ``` r
 DateTesting <- USTemp
