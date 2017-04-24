@@ -15,9 +15,15 @@ source("install_load.R", print.eval = TRUE)
 ### 2. 
 ##### a) Calculate the mean and the median of the trunk circumferences for different size of the trees. (Tree)  
 #### *We get the mean and median trunk circumference for the types of trees.*  
-![](/Users/mcrowder/Documents/Grad School/Data_Science/Case_Study_2/Case_Study_2/orangeTree.png)
+
+```{r, tidy=TRUE}
+library(pander)
+library(plyr)
+pander(ddply(Orange, .(Tree), summarize, MeanCirc = mean(circumference), MedCirc = median(circumference)), caption = "Tree Sizes")
+```
+
 ```{r}
-source("Q2_Orange.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
+source("Q2_Orange.R", print.eval = TRUE, echo = TRUE)
 ```
 
 

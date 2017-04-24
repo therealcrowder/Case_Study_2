@@ -16,36 +16,34 @@ source("install_load.R", print.eval = TRUE)
 
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
     ## 
     ## The downloaded binary packages are in
-    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpNRLINa/downloaded_packages
-
-    ## Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so':
-    ##   dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib
-    ##   Referenced from: /Library/Frameworks/R.framework/Resources/modules//R_X11.so
-    ##   Reason: image not found
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
+    ## 
+    ## The downloaded binary packages are in
+    ##  /var/folders/wz/910_s_x97vs8hrw8gnjc98g80000gn/T//RtmpYodtPb/downloaded_packages
 
 ### 2.
 
@@ -53,31 +51,76 @@ source("install_load.R", print.eval = TRUE)
 
 #### *We get the mean and median trunk circumference for the types of trees.*
 
-![](/Users/mcrowder/Documents/Grad%20School/Data_Science/Case_Study_2/Case_Study_2/orangeTree.png)
+``` r
+library(pander)
+library(plyr)
+pander(ddply(Orange, .(Tree), summarize, MeanCirc = mean(circumference), MedCirc = median(circumference)), 
+    caption = "Tree Sizes")
+```
+
+<table style="width:40%;">
+<caption>Tree Sizes</caption>
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Tree</th>
+<th align="center">MeanCirc</th>
+<th align="center">MedCirc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">94</td>
+<td align="center">108</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">99.57</td>
+<td align="center">115</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">111.1</td>
+<td align="center">125</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">135.3</td>
+<td align="center">156</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">139.3</td>
+<td align="center">167</td>
+</tr>
+</tbody>
+</table>
 
 ``` r
-source("Q2_Orange.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
+source("Q2_Orange.R", print.eval = TRUE, echo = TRUE)
 ```
 
     ## 
     ## > OrangeData <- Orange
     ## 
-    ## > #We are going to use a SQL function to get answer to part A #
-    ## > #summaryBy(circumference ~ Tree, data = OrangeData, FUN = list(mean, median))
-    ## > 
-    ## > 
-    ##  .... [TRUNCATED] 
+    ## > library(ggplot2)
     ## 
-    ## > qplot(data = OrangeData, x = age, y = circumference, shape = Tree, xlab = "Circumference", ylab = "Age", main = "Trunk Circumference versus Age by T ..." ... [TRUNCATED]
+    ## > qplot(data = OrangeData, x = age, y = circumference, 
+    ## +     shape = Tree, xlab = "Circumference", ylab = "Age", main = "Trunk Circumference versus A ..." ... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
     ## 
-    ## > # For the boxplot we use ggplot to generate Truck Circumference by Tree using different colors by tree #
-    ## > ggplot(data = OrangeData,
-    ## +   aes(x = Tre .... [TRUNCATED]
+    ## > ggplot(data = OrangeData, aes(x = Tree, y = circumference, 
+    ## +     group = Tree)) + geom_boxplot(aes(color = Tree)) + labs(x = "Tree #", 
+    ## +     y = " ..." ... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-2-2.png)
+![](README_files/figure-markdown_github/unnamed-chunk-3-2.png)
 
 ### 3.
 
@@ -156,7 +199,7 @@ source("part_i.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
     ## > # With plotting this data we want to display the difference between the Avg Min and Max Temp by the top 20 countries #
     ## > ggplot(data = AvgMinANDMaxT .... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 #### Part (ii) a, b, and c. For part c we get an *answer of 1.865 degrees that happened in 2012 to 2013*
 
@@ -218,7 +261,7 @@ source("part_ii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
     ## 
     ## > ggplot(data = landTemp, aes(x = landTemp$`DateTesting$Year`, y = landTemp$`DateTesting$Monthly.AverageTempFahrenheit`, group=1)) + geom_line() + geo .... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 #### Part (iii) Download “CityTemp” data set at box.com. Find the difference between the maximum and the minimum temperatures for each major city and report/visualize top 20 cities with maximum differences for the period since 1900.
 
@@ -267,7 +310,7 @@ source("part_iii.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
     ## > # Plot for Top 20 Cities
     ## > ggplot(data=CityTempDataAvgMinANDMaxTemp, aes(x=City, y=AvgMaxMinDiff, group=1, color=City)) + geom_point(size = 3) + the .... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 #### Part(iv) Compare the two graphs in (i) and (iii) and comment it.
 
@@ -305,4 +348,4 @@ source("part_iv.R", print.eval = TRUE, echo = TRUE, keep.source = TRUE)
     ## +   # Country Plot (Black Circles)
     ## +   geom_point(data=AvgMinANDMaxTempByDiffTop20, aes(x=Country, y=AvgMaxMinDiff), show.legend = FALSE, .... [TRUNCATED]
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)

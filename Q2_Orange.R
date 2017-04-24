@@ -1,7 +1,8 @@
 OrangeData <- Orange
-#We are going to use a SQL function to get answer to part A #
-#summaryBy(circumference ~ Tree, data = OrangeData, FUN = list(mean, median))
 
+#library(pander)
+
+#pander(ddply(Orange, .(Tree), summarize, MeanCirc = mean(circumference), MedCirc = median(circumference)), caption = "Tree Sizes")
 
 # With the below plot we are looking for a relationship between the circumference of the tree trunk and the age of the tree. #
 library(ggplot2)

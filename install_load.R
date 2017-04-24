@@ -7,6 +7,7 @@ install.packages("plyr", repos='http://cran.us.r-project.org')
 install.packages("sqldf", repos='http://cran.us.r-project.org')
 install.packages("lubridate", repos='http://cran.us.r-project.org')
 install.packages("formatR", repos='http://cran.us.r-project.org')
+install.packages("pander", repos='http://cran.us.r-project.org')
 
 library(weathermetrics)
 library(knitr)
@@ -17,3 +18,5 @@ library(plyr)
 library(sqldf)
 library(lubridate)
 library(formatR)
+library(pander)
+
